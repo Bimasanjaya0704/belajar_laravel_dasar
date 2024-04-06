@@ -26,3 +26,13 @@ route::redirect("/yuhu", "/bimas");
 route::fallback(function () {
     return ("404 Not Found ya");
 });
+
+route::view("/hello", 'hello', ['name'=> 'Bima']);
+
+Route::get('/hello2', function () {
+    return view('hello', ['name'=> 'Sanjaya']);
+});
+
+route::get('/admin', function () {
+    return view('admin.admin', ['admin'=> 'ADMIN PRAKA']);
+});
