@@ -67,4 +67,20 @@ class ServiceContainerTest extends TestCase
         self::assertSame($person1, $person2);
         self::assertSame($person3, $person1);
     }
+    public function testDepedencyInjectionFoo(){
+        $this->app->singleton(Foo::class, function($app) {
+            return new Foo();
+        });
+        $this->app->singleton(Bar::class, function($app){
+            return new Bar($app->make(Foo::class));
+        });
+
+        $foo= $this->app->make(Foo::class);
+        $bar= $this->app->make(Bar::class);
+        $bar2= $this->app->make(Bar::class);
+
+        self::assertEquals("Foo and Bar", $bar->bar());
+        self::assertSame($foo, $bar->foo);
+        self::assertSame($bar, $bar2);
+    }
 }
