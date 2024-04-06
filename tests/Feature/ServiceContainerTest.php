@@ -7,6 +7,8 @@ use App\Data\Person;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Services\HelloService;
+use App\Services\HelloServiceIndonesia;
 
 class ServiceContainerTest extends TestCase
 {
@@ -18,7 +20,7 @@ class ServiceContainerTest extends TestCase
 
     self::assertEquals("Foo and Bar", $foo->foo());
     self::assertEquals("Foo and Bar", $foo2->foo());
-    self::assertNotSame($foo, $foo2);
+    self::assertSame($foo, $foo2);
     }
 
     public function testBind()
@@ -82,5 +84,16 @@ class ServiceContainerTest extends TestCase
         self::assertEquals("Foo and Bar", $bar->bar());
         self::assertSame($foo, $bar->foo);
         self::assertSame($bar, $bar2);
+    }
+
+    public function testInterfaceToClass(){
+
+        $this->app->singleton(HelloService::class, function($app) {
+            return new HelloServiceIndonesia();
+        });
+
+        $helloService = $this->app->make(HelloService::class);
+
+        self::assertEquals("Halo Bima", $helloService->hello("Bima"));
     }
 }
