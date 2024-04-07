@@ -66,4 +66,12 @@ class RoutingTest extends TestCase
         ->assertSeeText("Conflict :Bima Sanjaya");
     }
 
+    public function testRouteParameterNamed() {
+        $this->get("/produk/12345")
+        ->assertSeeText("Link http://localhost/product/12345");
+
+        $this->get("/produk-redirect/12345")
+        ->assertRedirect("product/12345");
+    }
+
 }

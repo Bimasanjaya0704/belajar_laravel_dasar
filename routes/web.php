@@ -39,19 +39,19 @@ route::get('/admin', function () {
 
 route::get('/product/{id}', function ($productId) {
     return "Products :" . $productId;
-});
+}) ->name("product.detail");
 
 route::get("/product/{product}/items/{item}", function ($productId, $itemId) {
     return "Products :". $productId .", Item :". $itemId;
-});
+}) ->name("product.item.detail");
 
 Route::get("/categories/{id}", function (string $categoryId) {
     return "Category $categoryId";
-} ) ->where("id", '[0-9]+');
+} ) ->where("id", '[0-9]+') ->name('category.detail');
 
 route::get('/guru/{id?}', function ( string $guruId = "1" ) {
     return "Guru :$guruId";
-}) ->where("id","[0-9]+");
+}) ->where("id","[0-9]+") -> name("guru.detail");
 
 Route::get("/conflict/bima", function ( ) {
     return "Conflict :Bima Sanjaya";
@@ -61,3 +61,11 @@ route::get("/conflict/{name}", function ( string $name ) {
     return "Conflict :$name";
 });
 
+route::get("/produk/{id}", function ( string $produkId ) {
+    $link = route("product.detail", ["id"=> $produkId ] );
+    return "Link $link";
+});
+
+route::get("/produk-redirect/{id}", function ( $produktId) {
+    return redirect() -> route("product.detail", ["id"=> $produktId ] );
+}   );
