@@ -15,7 +15,7 @@ class FacadeTest extends TestCase
         $firstName2 = Config::get("contoh.author.first");
 
         self::assertEquals($firstName1, $firstName2);
-        var_dump(Config::all());
+        // var_dump(Config::all());
     }
 
     public function testConfigDepedency()
@@ -28,7 +28,7 @@ class FacadeTest extends TestCase
 
         self::assertEquals($firstName1, $firstName2);
         self::assertEquals($firstName1, $firstName3);
-        var_dump($config->all());
+        // var_dump($config->all());
     }
 
     public function testFacadeMocks(){
