@@ -96,3 +96,12 @@ route::get('/response/type/download', [\App\Http\Controllers\ResponseController:
 route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
 route::get('/cookie/get', [App\Http\Controllers\CookieController::class,'getCookie']);
 route::get('/cookie/delete', [App\Http\Controllers\CookieController::class,'deleteCookie']);
+
+route::get('/redirect/from', [App\Http\Controllers\RedirectResponse::class,'redirectFrom']);
+route::get('/redirect/to', [App\Http\Controllers\RedirectResponse::class,'redirectTo']);
+
+route::get('/redirect/name', [App\Http\Controllers\RedirectResponse::class, 'redirectName']);
+route::get('/redirect/name/{name}', [App\Http\Controllers\RedirectResponse::class,'redirectHello'])
+->name('redirect-hello');
+route::get('/redirect/action', [App\Http\Controllers\RedirectResponse::class,'redirectAction']);
+route::get('/redirect/bims', [App\Http\Controllers\RedirectResponse::class, 'redirectAway']);
