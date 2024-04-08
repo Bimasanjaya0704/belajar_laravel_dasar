@@ -91,3 +91,5 @@ route::post('/input/filter/only', [\App\Http\Controllers\InputController::class,
 route::post('/input/filter/except', [\App\Http\Controllers\InputController::class, 'filterExcept']);
 
 route::post('input/filter/merge', [\App\Http\Controllers\InputController::class, 'filterMerge']);
+
+route::post('/file/upload', [\App\Http\Controllers\FileController::class,'upload']);
