@@ -71,25 +71,24 @@ route::get("/produk-redirect/{id}", function ( $produktId) {
 }   );
 
 route::get("/controller/hello/request", [\App\Http\Controllers\HelloController::class, 'request']);
-
 route::get("/controller/hello/{name}", [\App\Http\Controllers\HelloController::class,"hello"]);
 
 route::get('/input/hello', [\App\Http\Controllers\InputController::class,'hello']);
-
 route::post('/input/hello', [\App\Http\Controllers\InputController::class,'hello']);
-
 route::post('/input/hello/first', [\App\Http\Controllers\InputController::class, 'helloFirst']);
-
 route::post('/input/hello/input', [\App\Http\Controllers\InputController::class, 'helloInput']);
-
 route::post('/input/hello/array', [\App\Http\Controllers\InputController::class, 'helloArray']);
 
 route::post('/input/type', [\App\Http\Controllers\InputController::class, 'inputType']);
-
 route::post('/input/filter/only', [\App\Http\Controllers\InputController::class, 'filterOnly']);
-
 route::post('/input/filter/except', [\App\Http\Controllers\InputController::class, 'filterExcept']);
-
 route::post('input/filter/merge', [\App\Http\Controllers\InputController::class, 'filterMerge']);
 
 route::post('/file/upload', [\App\Http\Controllers\FileController::class,'upload']);
+route::get('/response/hello', [\App\Http\Controllers\ResponseController::class,'response']);
+route::get('/response/header', [\App\Http\Controllers\ResponseController::class,'header']);
+
+route::get('/response/type/view', [\App\Http\Controllers\ResponseController::class,'responseView']);
+route::get('/response/type/json', [\App\Http\Controllers\ResponseController::class,'responseJson']);
+route::get('/response/type/file', [\App\Http\Controllers\ResponseController::class,'responseFile']);
+route::get('/response/type/download', [\App\Http\Controllers\ResponseController::class,'responseDownload']);
