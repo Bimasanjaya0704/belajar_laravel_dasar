@@ -92,3 +92,7 @@ route::get('/response/type/view', [\App\Http\Controllers\ResponseController::cla
 route::get('/response/type/json', [\App\Http\Controllers\ResponseController::class,'responseJson']);
 route::get('/response/type/file', [\App\Http\Controllers\ResponseController::class,'responseFile']);
 route::get('/response/type/download', [\App\Http\Controllers\ResponseController::class,'responseDownload']);
+
+route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
+route::get('/cookie/get', [App\Http\Controllers\CookieController::class,'getCookie']);
+route::get('/cookie/delete', [App\Http\Controllers\CookieController::class,'deleteCookie']);

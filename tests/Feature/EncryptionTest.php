@@ -13,7 +13,7 @@ class EncryptionTest extends TestCase
     public function testEncrypt()
     {
         $encrypt = Crypt::encrypt("Bima Sanjaya");
-        var_dump($encrypt);
+        // var_dump($encrypt);
         $decrypt = Crypt::decrypt("$encrypt");
 
         self::assertEquals("Bima Sanjaya", $decrypt);
