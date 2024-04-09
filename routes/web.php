@@ -84,7 +84,9 @@ route::post('/input/filter/only', [\App\Http\Controllers\InputController::class,
 route::post('/input/filter/except', [\App\Http\Controllers\InputController::class, 'filterExcept']);
 route::post('input/filter/merge', [\App\Http\Controllers\InputController::class, 'filterMerge']);
 
-route::post('/file/upload', [\App\Http\Controllers\FileController::class,'upload']);
+route::post('/file/upload', [\App\Http\Controllers\FileController::class,'upload'])
+->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+
 route::get('/response/hello', [\App\Http\Controllers\ResponseController::class,'response']);
 route::get('/response/header', [\App\Http\Controllers\ResponseController::class,'header']);
 
@@ -105,3 +107,11 @@ route::get('/redirect/name/{name}', [App\Http\Controllers\RedirectResponse::clas
 ->name('redirect-hello');
 route::get('/redirect/action', [App\Http\Controllers\RedirectResponse::class,'redirectAction']);
 route::get('/redirect/bims', [App\Http\Controllers\RedirectResponse::class, 'redirectAway']);
+
+route::get('/middleware/api', function(){
+    return "OK";
+})->middleware(['contoh:BS,401']);
+
+route::get('/middleware/group', function(){
+    return "GROUP";
+})->middleware(['BS']);
