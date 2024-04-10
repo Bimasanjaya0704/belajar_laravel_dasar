@@ -115,3 +115,6 @@ route::get('/middleware/api', function(){
 route::get('/middleware/group', function(){
     return "GROUP";
 })->middleware(['BS']);
+
+route::get('/form', [App\Http\Controllers\FormController::class,'form']);
+route::post('/form', [App\Http\Controllers\FormController::class,'submitForm']);
