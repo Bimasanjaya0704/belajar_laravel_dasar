@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,3 +119,14 @@ route::get('/middleware/group', function(){
 
 route::get('/form', [App\Http\Controllers\FormController::class,'form']);
 route::post('/form', [App\Http\Controllers\FormController::class,'submitForm']);
+
+route::get('/url/current', function (){
+    return URL::full();
+});
+
+route::get('/url/named', function(){
+    return route('redirect-hello', ['name' => 'bima']);
+});
+route::get('/url/action', function(){
+    return action([\App\Http\Controllers\FormController::class,'form'], []);
+});
