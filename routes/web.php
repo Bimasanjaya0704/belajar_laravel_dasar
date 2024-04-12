@@ -133,3 +133,14 @@ route::get('/url/action', function(){
 
 route::get('/sesion/create', [App\Http\Controllers\SesionController::class,'createSesion']);
 route::get('/sesion/get', [App\Http\Controllers\SesionController::class,'getSession']);
+
+route::get('/error/sample', function(){
+    throw new \Exception('Sample Error');
+});
+route::get('/error/manual', function(){
+    report(new Exception('Sample Error'));
+    return 'OK';
+});
+route::get('/error/validation', function(){
+    throw new \App\Exceptions\ValidationException('Validation Error');
+});
