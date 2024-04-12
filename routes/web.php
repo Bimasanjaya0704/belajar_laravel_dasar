@@ -144,3 +144,13 @@ route::get('/error/manual', function(){
 route::get('/error/validation', function(){
     throw new \App\Exceptions\ValidationException('Validation Error');
 });
+
+route::get('/abort/400', function(){
+    abort(400,'Upss Validation Error');
+});
+route::get('/abort/401', function(){
+    abort(401);
+});
+route::get('/abort/500', function(){
+    abort(500);
+});
